@@ -42,35 +42,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Add this route to your existing Node.js code to handle form submissions
-app.post('/contact', async (req, res) => {
-  const { name, email, message } = req.body;
-  
-  try {
-    // Email content
-    const mailOptions = {
-      from: process.env.notificationSender,
-      to: process.env.notificationReceiver, // Your email to receive notifications
-      subject: `New Contact Form Message from: ${name}`,
-      html: `
-        <h3>New message from your website</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `
-    };
-    
-    // Send email
-    await transporter.sendMail(mailOptions);
-    
-    // Email was sent successfully if we reached this point
-    res.redirect('/?message=success');
-    
-  } catch (error) {
-    console.error('Error sending email:', error);
-    res.redirect('/?message=error');
-  }
-});
+// Start server only for local development
+if (require.main === module) {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
 
 module.exports = app;
