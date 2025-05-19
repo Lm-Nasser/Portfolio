@@ -3,8 +3,6 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { createServer } = require('http');
-const { parse } = require('url');
 const next = require('next');
 
 const app = express();
