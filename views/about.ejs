@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary: #333;
+            --secondary: #646464;
+            --accent: #5e17eb;
+            --background: #f9f9f9;
+            --light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: var(--background);
+            color: var(--primary);
+            line-height: 1.6;
+            padding: 0 5%;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Tab styles */
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background-color: var(--light);
+            border: 2px solid var(--accent);
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tab.active {
+            background-color: var(--accent);
+            color: var(--light);
+        }
+
+        .tab i {
+            transition: transform 0.3s;
+        }
+
+        .section {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '•';
+            position: absolute;
+            left: -0.75rem;
+            top: 0;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .timeline-item p {
+            margin: 0;
+            color: var(--secondary);
+        }
+
+        .arrow {
+            display: inline-block;
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .skills {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon"
+        href="https://png.pngtree.com/png-vector/20190712/ourlarge/pngtree-programming-icon-trendy-style-isolated-background-png-image_1542444.jpg"
+        type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"></div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1 style="margin-bottom: 2rem; color: var(--accent);">About Me</h1>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="about">
+                <i class="fa-regular fa-folder-open"></i> About Me
+            </div>
+            <!-- Education -->
+            <!-- 
+            <div class="tab" data-tab="education">
+                <i class="fa-regular fa-folder"></i> Education
+            </div>
+            -->
+            <div class="tab" data-tab="experience">
+                <i class="fa-regular fa-folder"></i> Experience
+            </div>
+        </div>
+
+        <div class="section" id="about">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p>My Name is Nasser and I'm a <span class="skills">Full-Stack Developer</span> with over 1 year of experience in web development and graphic design, working
+                        with <span class="skills">HTML</span>, <span class="skills">CSS (Tailwind CSS, Bootstrap)</span>, <span
+                            class="skills">JavaScript</span>, and <span class="skills">jQuery</span>. Proficient in backend
+                        development with <span class="skills">Node.js</span>, <span class="skills">Express.js</span>, <span
+                            class="skills">PHP</span>, and <span class="skills">MySQL</span>, ensuring seamless server-side integration
+                        and efficient database management. I have a strong background in graphic design, allowing me to create
+                        visually appealing and user-friendly web applications using <span class="skills">Adobe Photoshop</span> and
+                        <span class="skills">Illustrator</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <!-- <div class="section hidden" id="education">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p>&lt; BSc in Web Development - University XYZ (2020 - 2023) /&gt; <span class="arrow">→</span></p>
+                </div>
+                <div class="timeline-item">
+                    <p>&lt; Diploma in Network Technologies - Institute ABC /&gt; <span class="arrow">→</span></p>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <div class="section hidden" id="experience">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <p><strong>Backend Developer | Remote at <span class="skills">WEBEX AG</span> 
+                        <span style="float: right;">FEBRUARY 2025<span class="arrow">→</span>MARCH 2025</span>
+                        </strong>
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        • Built responsive front-end interfaces using <span style="font-weight: bold;">HTML</span>, 
+                        <span style="font-weight: bold;">Tailwind CSS</span>, and 
+                        <span style="font-weight: bold;">JavaScript</span> with 
+                        <span style="font-weight: bold;">dynamic rendering</span> via 
+                        <span style="font-weight: bold;">DOM manipulation.</span> <br>
+                        • Handled client-server communication using <span style="font-weight: bold;">Fetch API.</span> <br>
+                        • Developed <span style="font-weight: bold;">Fetch API.</span>RESTful APIs with 
+                        <span style="font-weight: bold;">Node.js</span> and 
+                        <span style="font-weight: bold;">Express.js</span>, including custom endpoints and full 
+                        <span style="font-weight: bold;">CRUD functionality</span> with validation and error handling. <br>
+                        • Designed <span style="font-weight: bold;">MySQL</span> database and queries with JOINs, constraints, and foreign keys to manage and maintain
+                        relational data integrity.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>Wordpress Developer | Remote at <span class="skills">WEBEX AG</span> 
+                        <span style="float: right;">FEBRUARY 2025<span class="arrow">→</span>MARCH 2025</span>
+                        </strong>
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        • <span style="font-weight: bold;">Customized themes</span> and built responsive, SEO-friendly websites using 
+                        <span style="font-weight: bold;">Elementor</span> and other page builders/plugins. <br>
+                        • Integrated plugins like <span style="font-weight: bold;">Contact Form 7</span>, 
+                        <span style="font-weight: bold;">WooCommerce</span>, and <span style="font-weight: bold;">Rank Math SEO.</span> <br>
+                        • Performed updates, optimized performance with <span style="font-weight: bold;">caching/image compression,</span> 
+                        and <span style="font-weight: bold;">resolved theme/plugin issues.</span> <br>
+                        • Ensured mobile responsiveness and cross-browser compatibility across all sites.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>Freelance Front-End Developer | Remote
+                        <span style="float: right;">MAY 2022<span class="arrow">→</span>SEPTEMBER 2023</span>
+                        </strong>
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        • Designed and developed responsive static websites using <span style="font-weight: bold;">Photoshop, HTML, CSS frameworks (Tailwind CSS, Bootstrap)</span> and <span style="font-weight: bold;">JavaScript</span>. <br>
+                        • Created <span style="font-weight: bold;">HTML, CSS email templates</span>. <br>
+                        • Designed friendly <span style="font-weight: bold;">user interfaces</span> focusing on improving usability and the user experience.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <p><strong>Freelance Graphic Designer | Remote at <span class="skills">FIVERR</span> 
+                        <span style="float: right;">JULY 2018<span class="arrow">→</span>AUGUST 2021</span>
+                        </strong>
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        • Designed a wide range of visual assets, including web pages, logos, social media banners, and
+                        flyers, using <span style="font-weight: bold;">Adobe Photoshop</span> and 
+                        <span style="font-weight: bold;">Illustrator.</span>
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+
+        <footer>
+            <div class="social-links">
+                <a href="<%= github %>" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="<%= linkedin %>" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="<%= twitter %>" target="_blank" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="<%= email %>" target="_blank" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                <a href="<%= whatsapp %>" target="_blank" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
+
+            </div>
+            <p>&copy; 2025 Nasser Lamamar. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const sections = document.querySelectorAll('.section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and reset icons
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    const icon = t.querySelector('i');
+                    icon.className = 'fa-regular fa-folder'; // closed
+                });
+
+                // Add active class to clicked tab and open icon
+                tab.classList.add('active');
+                const icon = tab.querySelector('i');
+                icon.className = 'fa-regular fa-folder-open';
+
+                // Show corresponding section
+                const targetId = tab.getAttribute('data-tab');
+                sections.forEach(section => {
+                    section.classList.toggle('hidden', section.id !== targetId);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
